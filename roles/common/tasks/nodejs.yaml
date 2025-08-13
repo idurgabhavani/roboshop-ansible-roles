@@ -1,0 +1,12 @@
+- name: disable old version of nodejs  and enable new versio
+  ansible.builtin.shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+- name: install node js
+  ansible.builtin.dnf:
+    name: nodejs
+    state: present
+
+- name: Install dependicies
+  ansible.builtin.command: npm install
+  args:
+    chdir: /app

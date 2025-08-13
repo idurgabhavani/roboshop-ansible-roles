@@ -7,14 +7,15 @@
   ansible.builtin.package:
     name: mongodb-org-shell
     state: present
+    ignore_errors: true
 
 - name: get the entries_count
-  ansible.builtin.command: mongo --host <ip address of mongo> --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
+  ansible.builtin.command: mongo --host <ip address of mongo> --quiet --eval 'db = db.getSiblingDB("catalogue"); db.entries_count()'
   register: entries_count
   when: component == "catalogue"
 
 - name: get the users entries_count
-  ansible.builtin.command: mongo --host <ip address of mongo> --quiet --eval 'db = db.getSiblingDB("users"); db.users.count()'
+  ansible.builtin.command: mongo --host <ip address of mongo> --quiet --eval 'db = db.getSiblingDB("users"); db.entries_count()'
   register: entries_count
   when: component == "user"
 

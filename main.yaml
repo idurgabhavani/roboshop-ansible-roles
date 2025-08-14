@@ -1,5 +1,7 @@
 - name: " install {{component}}"
   hosts: localhost  #this also need to be component but due to not working we have changed this to component
+  vars:
+  - variables.yaml
   become: yes
   roles:
   - "{{component}}"

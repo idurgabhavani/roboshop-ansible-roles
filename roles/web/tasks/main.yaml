@@ -31,8 +31,3 @@
   notify:
   - Restart nginx
 
-- name: Restart Nginx service
-  ansible.builtin.service:
-    name: nginx
-    state: restarted
-    enabled: yes
